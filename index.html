@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" type="text/css"/>
+</head>
+<body>
+    <h1>Insert And Delete All Items In LocalStorage</h1>
+    <input type="input" id="inpKey" placeholder="Enter Key"/>
+    <input type="input" id="inpVal" placeholder="Enter Value"/>
+    <br />
+    <br />
+    <button id="addBtn" onclick="insertItem()">Insert Item</button>
+    <button id="clearBtn" onclick="clearItem()">Clear All</button>
+    <div id="output"></div>
+    <script>
+        const addBtn = document.getElementById("addBtn");
+        const output = document.getElementById("output");
+        function insertItem(){
+            const key = document.getElementById("inpKey").value;
+            const value = document.getElementById("inpVal").value;
+            // console.log("Key",key);
+            // console.log("Value" ,value);
+            if(key && value){
+            localStorage.setItem(key,value);
+            location.reload();
+            console.log(localStorage);
+        }
+    }
+    
+    for(let i=0 ; i<localStorage.length; i++){
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+
+    output.innerHTML += `${key} : ${value} <br />`;
+    }
+    function clearItem(){
+        localStorage.clear();
+        location.reload();
+    }
+    </script>
+</body>
+</html>
